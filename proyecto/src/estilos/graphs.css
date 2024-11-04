@@ -1,0 +1,28 @@
+@media (min-width: 340px) and (max-width: 450px) {
+    .button-container {
+      display: flex;
+      flex-direction: column; /* Coloca los botones en columnas */
+      align-items: center; /* Centra los botones horizontalmente */
+      gap: 10px; /* Espacio entre los botones */
+    }
+  
+    .button-container button {
+      width: 100%; /* Ancho completo */
+      max-width: 200px; /* Establece un ancho máximo para los botones */
+      height: 65px; /* Altura fija para todos los botones */
+      padding: 10px; /* Espaciado interno */
+      font-size: 16px; /* Tamaño de la fuente */
+      background-color: #f6e05e; /* Color de fondo (puedes cambiarlo) */
+      color: #4a5568; /* Color del texto (puedes cambiarlo) */
+      border: none; /* Sin borde */
+      border-radius: 8px; /* Bordes redondeados */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra del botón */
+      cursor: pointer; /* Cambia el cursor al pasar por encima */
+      transition: background-color 0.3s; /* Transición suave para el color de fondo */
+    }
+  
+    .button-container button:hover {
+      background-color: #ecc94b; /* Color de fondo al pasar el mouse (puedes cambiarlo) */
+    }
+  }
+  
