@@ -1,50 +1,57 @@
 import React from 'react';
+import BackgroundBubbles from '../Components/backgroundBubbles';
+import { NavMenu, uppdateC } from '../Components/MenuComponentes';
+import { PrevButton, NextButton } from '../Components/buttons';
 
 function Home() {
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-50 p-4">
-  
-      <div className="relative w-72 h-24 bg-yellow-400 rounded-lg shadow-lg">
-        <div className="absolute w-72 h-24 -top-2 -left-2 bg-orange-300 rounded-lg"></div>
-        <div className="absolute w-6 h-6 bg-white rounded-full top-4 left-4"></div>
-        <div className="flex justify-center items-center h-full">
-          <span className="bg-white py-1 px-4 rounded-full font-semibold text-gray-700">
-            Bienvenida Maca
-          </span>
+    <div className="relative h-screen overflow-hidden bg-gray-50">
+      <BackgroundBubbles />
+
+      {/* Sección de encabezado y rectángulos - Ocupa el primer 33% */}
+      <div className="h-1/3 flex flex-col items-center justify-center relative">
+        <div 
+          className="absolute top-10 items-center justify-center text-center h-[65%] w-[65%] bg-yellow-400 rounded-xl shadow-lg z-10"
+          style={{ transform: 'rotate(-5deg)' }}
+        >
+          <div className="items-center justify-center text-center w-8 h-8 bg-white rounded-full" style={{ transform: 'rotate(+5deg)' }}></div>
+          <div className="text-3xl font-merriweatherBold text-gray-800 mt-10">
+            <p>Bienvenida/o usuario</p>
+          </div>
+        </div>
+        <div 
+          className="absolute top-6 items-center justify-center left-[7%] h-[65%] w-[67%] bg-orange-300 rounded-xl z-0"
+          style={{ transform: 'rotate(-5deg)' }}
+        ></div>
+      </div>
+
+      {/* Sección de botones de opciones - Ocupa el segundo 33% */}
+      <div className="h-1/3 flex flex-col items-center justify-start w-full pt-10">
+        {/* Título arriba de los botones */}
+        <h2 className="text-center text-gray-700 font-semibold text-lg mb-6 z-30 md:text-xl">
+          ¿En qué te podemos ayudar hoy?
+        </h2>
+
+        {/* Contenedor de los botones en un grid de 2 columnas */}
+        <div className="grid grid-cols-2 gap-6 w-full max-w-md p-6">
+          <NavMenu label="Los Seis hitos de desarrollo motor" target="/hitos-desarrollo" />
+          <NavMenu label="Graficos y tablas de normalidad" target="/graficos-tablas" />
+          <NavMenu label="Ayuda ante dudas" target="/foro" />
+          <NavMenu label="Ver sesiones anteriores" target="/sesiones-anteriores" />
         </div>
       </div>
 
-      <h2 className="mt-8 text-center text-gray-700 font-semibold text-lg">
-        ¿En qué te podemos ayudar hoy sobre Santi?
-      </h2>
-
-      <div className="grid grid-cols-2 gap-4 mt-8 w-80">
-        <button className="flex items-center justify-center p-4 bg-yellow-400 rounded-lg shadow-md">
-          <div className="bg-green-200 w-full h-full flex items-center justify-center rounded-lg text-center text-gray-700 font-medium text-sm px-2">
-            Los Seis hitos de desarrollo motor
-          </div>
-        </button>
-        <button className="flex items-center justify-center p-4 bg-yellow-400 rounded-lg shadow-md">
-          <div className="bg-green-200 w-full h-full flex items-center justify-center rounded-lg text-center text-gray-700 font-medium text-sm px-2">
-            Graficos y tablas de normalidad
-          </div>
-        </button>
-        <button className="flex items-center justify-center p-4 bg-yellow-400 rounded-lg shadow-md">
-          <div className="bg-green-200 w-full h-full flex items-center justify-center rounded-lg text-center text-gray-700 font-medium text-sm px-2">
-            Ayuda ante dudas
-          </div>
-</button>
-        <button className="flex items-center justify-center p-4 bg-yellow-400 rounded-lg shadow-md">
-          <div className="bg-green-200 w-full h-full flex items-center justify-center rounded-lg text-center text-gray-700 font-medium text-sm px-2">
-            Ver sesiones anteriores
-          </div>
-        </button>
-        <button className="col-span-2 flex items-center justify-center p-4 bg-yellow-400 rounded-lg shadow-md">
-          <span className="text-gray-700 font-medium text-sm">Actualizar datos manualmente</span>
-        </button>
+      {/* Botón de actualización - Ubicado en la esquina inferior izquierda, con posicionamiento fijo */}
+      <div className="fixed bottom-4 left-10 z-50">
+        <PrevButton label="Actualizar datos manualmente" target= "/cambios"/>
+      </div>
+      <div className="fixed bottom-4 right-10 z-50">
+        <NextButton label="Registrarse" target= "/"/>
       </div>
     </div>
   );
 }
 
 export default Home;
+
+
