@@ -14,6 +14,8 @@ module.exports = {
       },
         fontFamily: {
           Tektur: ['Tektur', 'sans-serif'],
+          poppins: ['Poppins', 'sans-serif'],
+          merriweatherBold: ['Merriweather', 'serif'],
         },
     
       keyframes: {
