@@ -35,7 +35,7 @@ function App() {
             <p>Child growth</p>
           </div>
           <p className="text-gray-500">Monitorea su crecimiento con una pequeña ayuda</p>
-          <p className="text-gray-600">Selecciona una opción para continuar</p>
+          <p className="text-gray-600">Selecciona una opaación para continuar</p>
 
           <div className="space-y-4">
             <button className="w-48 py-2 bg-yellow-200 rounded-lg shadow-md text-gray-700">Nuevo Usuario</button>
