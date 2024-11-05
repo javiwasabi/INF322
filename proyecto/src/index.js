@@ -13,6 +13,8 @@ import Peso_talla from '../src/Pages/peso_talla';
 import Talla from '../src/Pages/talla';
 import './estilos/graphs.css';
 import './estilos/sub_graphs.css';
+import './Components/tabla.png';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
