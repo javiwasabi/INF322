@@ -70,29 +70,25 @@ const App2 = () => {
       <div className="relative flex items-center justify-center min-h-screen bg-white overflow-hidden">
         <BackgroundBubbles /> {/* Usa BackgroundBubbles en lugar de backgroundBubbles */}
         <div className="z-10 text-center space-y-6">
-            <div>
+          <div className="flex flex-wrap justify-center gap-6 mb-6"> {/* Ajusté esto para que tenga margen inferior */}
             {cardData.map((card, index) => (
-            <Card
-            key={card.id}
-            text={card.text}
-            image={card.image}
-            isChecked={checkedCards[index]}
-            onDateChange={(event) => handleDateChange(index, event)}
-            />
+              <Card
+                key={card.id}
+                text={card.text}
+                image={card.image}
+                isChecked={checkedCards[index]}
+                onDateChange={(event) => handleDateChange(index, event)}
+              />
             ))}
-            </div>  
-            
-          
-          
+          </div>
+          {/* El botón estará aquí debajo de las cartas */}
+          <div className="mt-4 flex justify-center"> {/* Ajusta el margen según lo necesario */}
+            <PrevButton label="Devolverse" target="/home" />
+          </div>
         </div>
-        <PrevButton label="Devolverse" target="/home" />
       </div>
     </div>
   );
-
-    
-  
-
 };
 
 export default App2;
