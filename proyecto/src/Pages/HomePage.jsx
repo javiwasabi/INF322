@@ -35,7 +35,7 @@ function Home() {
         {/* Contenedor de los botones en un grid de 2 columnas */}
         <div className="grid grid-cols-2 gap-6 w-full max-w-md p-6">
           <NavMenu label="Los Seis hitos de desarrollo motor" target="/hito-motor" />
-          <NavMenu label="Graficos y tablas de normalidad" target="/graficos-tablas" />
+          <NavMenu label="Graficos y tablas de normalidad" target="/graphs" />
           <NavMenu label="Ayuda ante dudas" target="/foro" />
           <NavMenu label="Ver sesiones anteriores" target="/sesionesanteriores" />
         </div>
