@@ -5,7 +5,8 @@
   - npm install react-card-flip
   - npm install react-scroll
   - npm install react-router-dom
-  - npm install react-icons 
+  - npm install react-icons
+  - npm install --save chart.js react-chartjs-2
 
 
 
