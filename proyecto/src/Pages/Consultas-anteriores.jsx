@@ -5,6 +5,8 @@ import Autos from '../Components/autos';
 import Catalogos from '../Components/catalogo';
 import BackgroundBubbles from '../Components/backgroundBubbles'; // Asegúrate de que esté en mayúscula
 import './Consultas-anteriores.css';
+import { PrevButton } from '../Components/buttons';
+
 function App3() {
     const [activePopup, setActivePopup] = useState(null);
 
@@ -49,6 +51,8 @@ function App3() {
                 </div>
             )}
           </div>
+
+          <PrevButton label="Devolverse" target="/home" />
          
         </div>
       </div>

@@ -10,6 +10,7 @@ import image3 from './assets/etapa3.jpg';
 import image4 from './assets/etapa4.jpg';
 import image5 from './assets/etapa5.jpg';
 import image6 from './assets/etapa6.jpg';
+import { PrevButton } from '../Components/buttons';
 
 
 // Sample data for the cards
@@ -84,6 +85,7 @@ const App2 = () => {
           
           
         </div>
+        <PrevButton label="Devolverse" target="/home" />
       </div>
     </div>
   );

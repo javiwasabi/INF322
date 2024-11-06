@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import App2 from './Pages/HitoMotor';
 import App3 from '../src/Pages/Consultas-anteriores';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa Router
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import App from './Pages/Initialpages/App';
 import reportWebVitals from './reportWebVitals';
 import GraphsMenu from '../src/Pages/graphs_menu';
@@ -25,27 +23,27 @@ import Home from './Pages/HomePage';
 import './estilos/graphs.css';
 import './estilos/sub_graphs.css';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
       <Routes>
-      <Route path="/" element={<App />} /> 
-      <Route path="/graphs" element={<GraphsMenu />} /> 
-      <Route path="/imc" element={<Imc />} /> 
-      <Route path="/longitud" element={<Longitud />} /> 
-      <Route path="/perimetro" element={<Perimetro />} /> 
-      <Route path="/pesoedad" element={<Peso_edad />} /> 
-      <Route path="/pesotalla" element={<Peso_talla />} /> 
-      <Route path="/talla" element={<Talla />} /> 
-      <Route path="/aboutyou1" element={<Aboutyou1/>} /> 
-      <Route path="/aboutyou2" element={<Aboutyou2/>} /> 
-      <Route path="/aboutyou3" element={<Aboutyou3/>} /> 
-      <Route path="/foro" element={<Foro/>} /> 
-      <Route path="/cambios" element={<Cambios/>} /> 
-      <Route path="/home" element={<Home/>} /> 
-      <Route path="/chov1" element={<App3/>} /> 
+        <Route path="/" element={<App />} /> 
+        <Route path="/graphs" element={<GraphsMenu />} /> 
+        <Route path="/imc" element={<Imc />} /> 
+        <Route path="/longitud" element={<Longitud />} /> 
+        <Route path="/perimetro" element={<Perimetro />} /> 
+        <Route path="/pesoedad" element={<Peso_edad />} /> 
+        <Route path="/pesotalla" element={<Peso_talla />} /> 
+        <Route path="/talla" element={<Talla />} /> 
+        <Route path="/aboutyou1" element={<Aboutyou1/>} /> 
+        <Route path="/aboutyou2" element={<Aboutyou2/>} /> 
+        <Route path="/aboutyou3" element={<Aboutyou3/>} /> 
+        <Route path="/foro" element={<Foro/>} /> 
+        <Route path="/cambios" element={<Cambios/>} /> 
+        <Route path="/home" element={<Home/>} /> 
+        <Route path="/sesionesanteriores" element={<App3/>} /> 
+        <Route path="/hito-motor" element={<App2/>} /> 
       </Routes>
     </Router>
   </React.StrictMode>
