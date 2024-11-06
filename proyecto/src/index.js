@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import App3 from '../src/Pages/Consultas-anteriores';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa Router
 import App from './Pages/Initialpages/App';
 import reportWebVitals from './reportWebVitals';
@@ -41,6 +45,7 @@ root.render(
       <Route path="/foro" element={<Foro/>} /> 
       <Route path="/cambios" element={<Cambios/>} /> 
       <Route path="/home" element={<Home/>} /> 
+      <Route path="/chov1" element={<App3/>} /> 
       </Routes>
     </Router>
   </React.StrictMode>
