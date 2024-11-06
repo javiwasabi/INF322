@@ -22,6 +22,8 @@ import Home from './Pages/HomePage';
 
 import './estilos/graphs.css';
 import './estilos/sub_graphs.css';
+import './Components/tabla.png';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
