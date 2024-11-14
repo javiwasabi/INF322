@@ -52,7 +52,7 @@ function App3() {
             )}
           </div>
 
-          <PrevButton label="Devolverse" target="/home" />
+          <PrevButton label="Atrás" target="/" />
          
         </div>
       </div>

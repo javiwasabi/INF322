@@ -37,6 +37,8 @@ root.render(
       <Route path="/talla" element={<Talla />} /> 
       <Route path="/foro" element={<Foro/>} /> 
       <Route path="/cambios" element={<Cambios/>} /> 
+      <Route path="/sesiones-anteriores" element={<App3/>} /> 
+      <Route path="/hitos-desarrollo" element={<App2/>} /> 
 
       </Routes>
     </Router>

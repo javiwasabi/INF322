@@ -121,7 +121,7 @@ const App2 = () => {
             ))}
           </div>
         </div>
-        <PrevButton label="Atrás" target="/home" />
+        <PrevButton label="Atrás" target="/" />
       </div>
     </div>
   );
