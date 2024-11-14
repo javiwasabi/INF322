@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Buscador from '../../Components/buscador';
-import Navbar from '../../Components/navbar';
-import Autos from '../../Components/autos';
-import Catalogos from '../../Components/catalogo';
+
 import BackgroundBubbles from '../../Components/backgroundBubbles'; // Asegúrate de que esté en mayúscula
 import { CustomButton } from '../../Components/buttons';
-import { PrevButton, NextButton } from '../../Components/buttons';
+import { PrevButton, NextButto } from '../../Components/buttons';
 
-
+import { NavMenu} from '../../Components/MenuComponentes';
 
 function App() {
   const [navbarBackground, setNavbarBackground] = useState(false);
@@ -34,34 +31,53 @@ function App() {
   }, []);
 
   return (
-    <div className="h-screen w-full">
-      <div className="relative flex items-center justify-center min-h-screen bg-white overflow-hidden">
-        <BackgroundBubbles />
-        
-        <div className="z-10 text-center space-y-6">
-          <div className="text-5xl font-merriweatherBold text-gray-800">
-            <p>Your baby</p>
-            <p>Child growth</p>
+    <div className="relative h-screen overflow-hidden bg-gray-50">
+      <BackgroundBubbles />
+
+      {/* Sección de encabezado y rectángulos - Ocupa el primer 33% */}
+      <div className="h-1/3 flex flex-col items-center justify-center relative">
+        <div 
+          className="absolute top-10 items-center justify-center text-center h-[65%] w-[65%] bg-yellow-400 rounded-xl shadow-lg z-10"
+          style={{ transform: 'rotate(-5deg)' }}
+        >
+          <div className="items-center justify-center text-center w-8 h-8 bg-white rounded-full" style={{ transform: 'rotate(+5deg)' }}></div>
+          <div className="text-3xl font-merriweatherBold text-gray-800 mt-10">
+            <p>Bienvenida/o usuario</p>
           </div>
-          <p className="text-gray-500 font-poppins  md:text-s">Monitorea su crecimiento con una pequeña ayuda</p>
-          <div className='mt-[10%] p-10 flex flex-col items-center'>
-            <p className=" text-gray-600 text-sm font-poppins md:text-s">Selecciona una opción para continuar</p>
-
-
-           <div className="flex flex-col items-center space-y-6 mt-[10%] w-full">
-                <CustomButton label="Nuevo Usuario" onClick={handleBack} className="w-full h-12 text-lg" />
-                <CustomButton label="Usuario existente" onClick={handleBack} className="w-full h-12 text-lg" />
-            </div>
-          </div>
-
-          <PrevButton label="Devolverse" target="/" />
-          <NextButton label="Siguiente" target="/aboutyou1" />
-
-
-
-          
         </div>
+        <div 
+          className="absolute top-6 items-center justify-center left-[7%] h-[65%] w-[67%] bg-orange-300 rounded-xl z-0"
+          style={{ transform: 'rotate(-5deg)' }}
+        ></div>
       </div>
+
+      <div className=''>
+      <div className="h-1/3 flex flex-col items-center w-full pt-10">
+        {/* Título arriba de los botones */}
+        <h2 className="text-center text-gray-700 font-semibold text-lg mb-6 z-30 md:text-xl">
+          ¿En qué te podemos ayudar hoy?
+        </h2>
+
+
+        <div className=" w-[30%] flex justify-end pr-6 mb-4">
+  <CustomButton label="Actualizar datos manualmente" target="/cambios" />
+</div>
+
+
+        
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-11 w-full  max-w-md mx-auto p-6 ">
+          <NavMenu className="w-full h-full" label="Los Seis hitos de desarrollo motor" target="/hitos-desarrollo" />
+          <NavMenu className="w-full h-full" label="Graficos y tablas de normalidad" target="/graficos-tablas" />
+          <NavMenu className="w-full h-full" label="Ayuda ante dudas" target="/foro" />
+          <NavMenu className="w-full h-full" label="Ver sesiones anteriores" target="/sesiones-anteriores" />
+        </div>
+
+
+
+      </div>
+      
+      </div>
+   
     </div>
   );
 }

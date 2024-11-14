@@ -62,7 +62,7 @@ function Cambios() {
         </div>
       </div>
     </div>
-          <PrevButton label="Devolverse" target="/home" />
+          <PrevButton label="Atras" target="/" />
         
 
           

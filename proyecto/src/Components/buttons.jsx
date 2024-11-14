@@ -39,7 +39,7 @@ export const NextButton = ({ label, target }) => {
 export const CustomButton = ({ label, onClick }) => {
   return (
     <button
-      className=" w-full md:w-48 py-3 bg-yellow-200 rounded-lg shadow-md text-gray-700 text-l md:text-l"
+      className="w-md md:w-40 py-3 bg-yellow-200 rounded-lg shadow-md text-gray-700 text-xs md:text-xs"
       onClick={onClick}
     >
       {label}

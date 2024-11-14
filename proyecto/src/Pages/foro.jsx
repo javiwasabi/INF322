@@ -74,7 +74,7 @@ function Foro() {
         </div>
       </div>
     </div>
-          <PrevButton label="Devolverse" target="/home" />
+          <PrevButton label="Atrás" target="/" />
 
 
           
