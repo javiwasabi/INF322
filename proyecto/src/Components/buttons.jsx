@@ -36,11 +36,16 @@ export const NextButton = ({ label, target }) => {
 };
 
 
-export const CustomButton = ({ label, onClick }) => {
+export const CustomButton = ({ label, target }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(target); // Navega a la ruta especificada
+    };
   return (
     <button
       className="w-md md:w-40 py-3 bg-yellow-200 rounded-lg shadow-md text-gray-700 text-xs md:text-xs"
-      onClick={onClick}
+      onClick={handleClick}
     >
       {label}
     </button>
