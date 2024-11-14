@@ -21,9 +21,9 @@ function talla() {
           <p className="text-base font-bold text-gray-8  00">Indica: normalidad/anormalidad</p>
         </div>
         
-        <div className="absolute bottom-4 right-4"> {/* Posicionando el botón en la esquina inferior derecha */}
+        <div className="absolute bottom-4 left-4"> {/* Posicionando el botón en la esquina inferior derecha */}
           <button className="w-48 py-2 bg-yellow-200 rounded-lg shadow-md text-gray-700">
-            <Link to="/graphs">Devolverse</Link>
+            <Link to="/graphs">Atrás</Link>
           </button>
         </div>
       </div>
