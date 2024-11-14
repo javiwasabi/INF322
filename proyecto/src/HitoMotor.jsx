@@ -14,7 +14,7 @@ const cardData = [
   { id: 6, text: 'Card 6', imageUrl: 'https://via.placeholder.com/150' },
 ];
 
-const Card = ({ text, imageUrl, isChecked, onClick }) => {
+const Card = ({ text, imageUrl, isChecked, onClick, date, onDateChange, showDate }) => {
   return (
     <div
       onClick={onClick}
@@ -31,6 +31,15 @@ const Card = ({ text, imageUrl, isChecked, onClick }) => {
     >
       <img src={imageUrl} alt={text} style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
       <h3>{text}</h3>
+      {showDate && (
+        <input
+          type="date"
+          value={date}
+          onChange={onDateChange}
+          style={{ marginTop: '8px', padding: '4px', borderRadius: '4px' }}
+        />
+      )}
+      {!showDate && date && <p>{date}</p>}
       <input type="checkbox" checked={isChecked} readOnly />
     </div>
   );
@@ -38,49 +47,41 @@ const Card = ({ text, imageUrl, isChecked, onClick }) => {
 
 const App2 = () => {
   const [checkedCards, setCheckedCards] = useState(Array(6).fill(false));
+  const [date, setDate] = useState('');
 
   const handleCardClick = (index) => {
     const newCheckedCards = [...checkedCards];
     newCheckedCards[index] = !newCheckedCards[index];
     setCheckedCards(newCheckedCards);
   };
+
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
+  };
+
   return (
     <div className="h-screen w-full">
       <div className="relative flex items-center justify-center min-h-screen bg-white overflow-hidden">
         <BackgroundBubbles /> {/* Usa BackgroundBubbles en lugar de backgroundBubbles */}
         <div className="z-10 text-center space-y-6">
-            <div>
+          <div>
             {cardData.map((card, index) => (
-            <Card
-            key={card.id}
-            text={card.text}
-            imageUrl={card.imageUrl}
-            isChecked={checkedCards[index]}
-            onClick={() => handleCardClick(index)}
-            />
+              <Card
+                key={card.id}
+                text={card.text}
+                imageUrl={card.imageUrl}
+                isChecked={checkedCards[index]}
+                onClick={() => handleCardClick(index)}
+                date={date}
+                onDateChange={index === 0 ? handleDateChange : undefined}
+                showDate={index === 0}
+              />
             ))}
-            </div>  
-            
-          
-          
+          </div>  
         </div>
       </div>
     </div>
   );
-
-    
-    <div>
-      {cardData.map((card, index) => (
-        <Card
-          key={card.id}
-          text={card.text}
-          imageUrl={card.imageUrl}
-          isChecked={checkedCards[index]}
-          onClick={() => handleCardClick(index)}
-        />
-      ))}
-    </div>
-
 };
 
 export default App2;
