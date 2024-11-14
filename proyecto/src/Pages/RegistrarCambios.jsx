@@ -29,7 +29,7 @@ function Cambios() {
       <div className="relative flex items-center justify-center min-h-screen bg-white overflow-hidden">
         <BackgroundBubbles />
         <div className="z-10 text-center space-y-6">
-          <div className="text-5xl font-merriweatherBold text-gray-800">
+          <div className="text-2xl font-merriweatherBold text-gray-800">
             <p>Registra los cambios que ha tenido tu hija/o</p>
           </div>
 

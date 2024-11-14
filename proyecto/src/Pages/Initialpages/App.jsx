@@ -54,7 +54,7 @@ function App() {
       <div className=''>
       <div className="h-1/3 flex flex-col items-center w-full pt-10">
         {/* Título arriba de los botones */}
-        <h2 className="text-center text-gray-700 font-semibold text-lg mb-6 z-30 md:text-xl">
+        <h2 className="text-center text-gray-700 font-merriweatherBold text-lg mb-6 z-30 md:text-xl">
           ¿En qué te podemos ayudar hoy?
         </h2>
 

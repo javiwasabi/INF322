@@ -29,7 +29,7 @@ function Foro() {
       <div className="relative z-10 p-8">
         <div className="container mx-auto">
           <header className={`flex justify-between items-center mb-6 ${navbarBackground ? 'bg-purple-700 text-white' : 'bg-transparent'} transition-colors duration-300 py-4 px-6 rounded-md`}>
-            <h1 className="text-xl font-semibold text-black-400">Your baby Child growth</h1>
+            <h1 className="text-xl font-merriweatherBold text-black-400">Your baby Child growth</h1>
             
             
           </header>

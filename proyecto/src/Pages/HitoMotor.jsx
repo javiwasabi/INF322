@@ -1,9 +1,4 @@
 import React, { useState } from 'react';
-
-import Buscador from '../Components/buscador';
-import Navbar from '../Components/navbar';
-import Autos from '../Components/autos';
-import Catalogos from '../Components/catalogo';
 import BackgroundBubbles from '../Components/backgroundBubbles';
 import image1 from './assets/etapa1.jpg';
 import image2 from './assets/etapa2.jpg';
@@ -22,7 +17,6 @@ const cardData = [
   { id: 6, months: 6, text: 'Puede caminar solo', image: image6 },
 ];
 
-//  Funcion que maneja agregar fechas a un input de frontend, trabaja con geeks4geeks/IA
 const addMonthsToDate = (date, months) => {
   const [year, month, day] = date.split("-").map(Number);
   
@@ -45,25 +39,17 @@ const addMonthsToDate = (date, months) => {
   return `${updatedDay}/${updatedMonth}/${updatedYear}`;
 };
 
-// Componente cartas
-const Card = ({ text, image, months, isChecked, limitDate, onCardClick }) => {
+const Card = ({ text, image, isChecked, limitDate, onCardClick }) => {
   return (
     <div
       onClick={onCardClick}
-      style={{
-        border: '1px solid #ccc',
-        borderRadius: '8px',
-        padding: '16px',
-        width: '200px',
-        textAlign: 'center',
-        backgroundColor: isChecked ? 'green' : 'white',
-        color: isChecked ? 'white' : 'black',
-        cursor: 'pointer',
-      }}
+      className={`p-4 w-48 text-center border rounded-lg shadow-md cursor-pointer transition-transform duration-200 ${
+        isChecked ? 'bg-green-500 text-white' : 'bg-white text-black'
+      }`}
     >
-      <img src={image} alt={text} style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
-      <h3><b>{text}</b></h3>
-      <p>Consultar con el pediatra si este hito no se ha cumplido antes de : {limitDate}</p>
+      <img src={image} alt={text} className="w-full h-auto rounded-md mb-2" />
+      <h3 className="font-bold mb-2">{text}</h3>
+      <p className="text-sm">Consultar con el pediatra si este hito no se ha cumplido antes de: {limitDate}</p>
     </div>
   );
 };
@@ -86,34 +72,28 @@ const App2 = () => {
 
   return (
     <div className="h-screen w-full">
-      <div className="relative flex items-center justify-center min-h-screen bg-white overflow-hidden">
+      <div className="relative flex flex-col items-center justify-center min-h-screen bg-white overflow-hidden p-4">
         <BackgroundBubbles />
+
         <div className="z-10 text-center space-y-6">
           <div>
-            {/* Fecha */}
-            <h1><b>Ingrese la fecha de nacimiento de su hijo</b></h1>
+            <h1 className="text-2xl font-bold mb-4">Ingrese la fecha de nacimiento de su hijo</h1>
             <input
               type="date"
               value={date}
               onChange={handleDateChange}
-              style={{
-                padding: '8px',
-                borderRadius: '4px',
-                border: '1px solid #ccc',
-                marginBottom: '16px',
-              }}
+              className="px-4 py-2 border rounded-lg mb-4"
             />
           </div>
-          <h1><b>Seleccione las tarjetas para marcar el avance.</b></h1>
 
-          <div>
-            {/* Cards */}
+          <h2 className="text-xl font-semibold mb-4">Seleccione las tarjetas para marcar el avance.</h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {cardData.map((card, index) => (
               <Card
                 key={card.id}
                 text={card.text}
                 image={card.image}
-                months={card.months}
                 isChecked={checkedCards[index]}
                 limitDate={date ? addMonthsToDate(date, card.months) : 'N/A'}
                 onCardClick={() => toggleCardCheck(index)}
@@ -121,7 +101,11 @@ const App2 = () => {
             ))}
           </div>
         </div>
-        <PrevButton label="Atrás" target="/" />
+        <div className="absolute bottom-8 absolute left-20">
+          <PrevButton label="Atrás" target="/" />
+        </div>
+        
+        
       </div>
     </div>
   );
