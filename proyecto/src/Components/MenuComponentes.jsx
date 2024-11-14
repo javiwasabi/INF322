@@ -11,7 +11,7 @@ export const NavMenu = ({ label, target }) => {
 
     return (
         <button
-            className="flex items-center justify-center h-full w-full mt-[10%] p-3 md:p-4 bg-[#EAD35A] rounded-xl shadow-md hover:bg-[#D2C16E] transition-colors duration-300"
+            className="flex items-center justify-center h-full w-full mt-[3%] p-3 md:p-4 bg-[#EAD35A] rounded-xl shadow-md hover:bg-[#D2C16E] transition-colors duration-300"
             onClick={handleClick}
         >
             <div className="bg-[#9FC698] w-full h-full flex items-center justify-center rounded-xl text-center text-gray-700 font-medium text-sm md:text-base px-2 py-1">
