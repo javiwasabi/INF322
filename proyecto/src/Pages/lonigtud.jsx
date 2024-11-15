@@ -3,7 +3,7 @@ import BackgroundBubbles from '../Components/backgroundBubbles'; // Asegúrate d
 import Tabla from '../Components/tabla.png';
 // import '../estilos/graphs.css'; // Asegúrate de que esta ruta sea correcta
 import { Link } from 'react-router-dom';
-
+import { PrevButton } from '../Components/buttons';
 function Longitud() {
   return (
     <div className="h-screen w-full">
@@ -17,14 +17,14 @@ function Longitud() {
           <div className="w-full max-w-4xl"> {/* Limita el ancho de la tabla para mantenerla centrada */}
             <img src={Tabla} alt="Tabla de datos" className="w-full h-auto" />
           </div>
-          <p className="text-base font-bold text-gray-800">Su hijo se encuentra en el sector: x</p>
-          <p className="text-base font-bold text-gray-800">Indica: normalidad/anormalidad</p>
+          <p className="text-base font-bold text-gray-800">
+            Su <span style={{ color: 'rgba(0, 0, 255)' }}>hijo</span> se encuentra dentro de la media de longitud en base a su edad
+          </p>
+          {<p className="text-base font-bold text-gray-8  00">12 meses =  75.7</p>}
         </div>
-        
-        <div className="absolute bottom-4 left-4"> {/* Posicionando el botón en la esquina inferior derecha */}
-          <button className="w-48 py-2 bg-yellow-200 rounded-lg shadow-md text-gray-700">
-            <Link to="/graphs">Atrás</Link>
-          </button>
+
+        <div className="absolute bottom-4 left-4"> {/* Botón en la esquina inferior derecha */}
+            <PrevButton label="Atrás" target="/graphs" />
         </div>
       </div>
     </div>

@@ -25,4 +25,29 @@
       background-color: #ecc94b; /* Color de fondo al pasar el mouse (puedes cambiarlo) */
     }
   }
+
+  @media (min-width: 750px) {
+    .button-container {
+      display: flex;
+      flex-direction: row; /* Coloca los botones en una fila */
+      justify-content: center; /* Centra los botones horizontalmente */
+      gap: 20px; /* Espacio entre los botones */
+    }
+  
+    .button-container a {
+      width: 250px; /* Ancho fijo para los botones */
+      height: 70px; /* Altura fija para los botones */
+      font-size: 18px; /* Aumenta el tamaño de la fuente */
+      padding: 15px; /* Espaciado interno */
+      background-color: #f6e05e; /* Color de fondo */
+      color: #4a5568; /* Color del texto */
+      border-radius: 10px; /* Bordes redondeados */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Sombra más grande */
+      transition: background-color 0.3s;
+    }
+  
+    .button-container a:hover {
+      background-color: #ecc94b; /* Color de fondo al pasar el mouse */
+    }
+  }
   

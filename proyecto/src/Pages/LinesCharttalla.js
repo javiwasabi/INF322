@@ -40,6 +40,7 @@ const data = {
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             fill: false,
             tension: 0.2,  // Suaviza la curva
+            labelText: 'Talla muy alta/muy baja',
         },
         {
             label: '85th',
@@ -48,6 +49,7 @@ const data = {
             backgroundColor: 'rgba(255, 165, 0, 0.1)',
             fill: false,
             tension: 0.2,
+            labelText: 'Talla alta/baja',
         },
         {
             label: '50th',
@@ -56,6 +58,16 @@ const data = {
             backgroundColor: 'rgba(0, 255, 0, 0.1)',
             fill: false,
             tension: 0.2,
+            labelText: 'Talla promedio',
+        },
+        {
+            label: 'Blue Line',
+            data: [52, 54, 56, 59, 63, 67, 71, 75, 79, 82, 85, 87, 88],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.1)',
+            fill: false,
+            tension: 0.2,
+            labelText: 'Talla de su hijo/a a través del tiempo',
         },
         {
             label: '15th',
@@ -64,6 +76,8 @@ const data = {
             backgroundColor: 'rgba(255, 165, 0, 0.1)',
             fill: false,
             tension: 0.2,
+            // Desactivado para no mostrar la leyenda
+            display: false,
         },
         {
             label: '3rd',
@@ -72,6 +86,8 @@ const data = {
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             fill: false,
             tension: 0.2,
+            // Desactivado para no mostrar la leyenda
+            display: false,
         },
     ],
 };
@@ -95,7 +111,7 @@ const options = {
         x: {
             title: {
                 display: true,
-                text: 'Edad (meses)'
+                text: 'Edad (en meses)'
             },
             grid: {
                 color: 'rgba(0, 0, 0, 0.1)',
@@ -108,7 +124,22 @@ const options = {
     },
     plugins: {
         legend: {
-            display: false,  // Eliminamos las leyendas
+            display: true,  // Activamos la leyenda
+            labels: {
+                generateLabels: (chart) => {
+                    return chart.data.datasets
+                        .filter((dataset) => dataset.display !== false)  // Filtramos las que tienen display en false
+                        .map((dataset, index) => {
+                            return {
+                                text: dataset.labelText || dataset.label,
+                                fillStyle: dataset.borderColor,
+                                strokeStyle: dataset.borderColor,
+                                lineWidth: 3,
+                                index,
+                            };
+                        });
+                },
+            },
         },
         tooltip: {
             mode: 'index',

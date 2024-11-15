@@ -34,7 +34,7 @@ const data = {
     labels: labels,
     datasets: [
         {
-            label: 'Línea negra (superior)',
+            label: 'Línea negra: Aumento excepcional/insuficiente',
             data: [38, 40, 42, 43.5, 45, 46, 46.5, 47, 47.5, 47.8, 48.1, 48.3, 48.5, 48.6, 48.7, 48.8, 48.9, 49, 49],
             borderColor: 'black',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -42,7 +42,7 @@ const data = {
             tension: 0.4,
         },
         {
-            label: 'Línea roja',
+            label: 'Línea roja: Aumento moderado/retrasado',
             data: [37, 39, 40.5, 42, 43.3, 44.2, 44.8, 45.3, 45.7, 46, 46.3, 46.5, 46.6, 46.7, 46.8, 46.9, 47, 47, 47],
             borderColor: 'red',
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
@@ -50,18 +50,26 @@ const data = {
             tension: 0.4,
         },
         {
-            label: 'Línea amarilla',
-            data: [36, 37.8, 39.2, 40.5, 41.6, 42.4, 43, 43.5, 43.9, 44.2, 44.4, 44.6, 44.7, 44.8, 44.9, 45, 45, 45],
+            label: 'Línea amarilla: Aumento ligero/lento',
+            data: [36, 37.8, 39.2, 40.5, 41.6, 42.4, 43, 43.5, 43.9, 44.2, 44.4, 44.6, 44.7, 44.8, 44.9, 45, 45, 45, 45.1],
             borderColor: 'orange',
             backgroundColor: 'rgba(255, 165, 0, 0.1)',
             fill: false,
             tension: 0.4,
         },
         {
-            label: 'Línea verde',
-            data: [34.5, 36.2, 37.5, 38.7, 39.7, 40.5, 41, 41.5, 41.9, 42.2, 42.4, 42.6, 42.7, 42.8, 42.9, 43, 43, 43],
+            label: 'Línea verde: Aumento promedio',
+            data: [34.5, 36.2, 37.5, 38.7, 39.7, 40.5, 41, 41.5, 41.9, 42.2, 42.4, 42.6, 42.7, 42.8, 42.9, 43, 43, 43, 43],
             borderColor: 'green',
             backgroundColor: 'rgba(0, 255, 0, 0.1)',
+            fill: false,
+            tension: 0.4,
+        },
+        {
+            label: 'Línea azul: Aumento de perímetro cefálico a través del tiempo de su hijo/a',
+            data: [33.5, 35.2, 37.5, 38.9, 40.3, 40.8, 41.5, 41.8, 42, 42.2, 42.4, 42.6, 42.7, 42.8, 42.9, 43, 43.3, 43.5, 43.7],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.1)',
             fill: false,
             tension: 0.4,
         },
@@ -71,6 +79,7 @@ const data = {
             borderColor: 'orange',
             backgroundColor: 'rgba(255, 165, 0, 0.1)',
             fill: false,
+            display: false,
             tension: 0.4,
         },
         {
@@ -79,6 +88,7 @@ const data = {
             borderColor: 'red',
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             fill: false,
+            display: false,
             tension: 0.4,
         },
         {
@@ -87,6 +97,7 @@ const data = {
             borderColor: 'black',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
             fill: false,
+            display: false,
             tension: 0.4,
         },
     ],
@@ -97,33 +108,48 @@ const options = {
         y: {
             title: {
                 display: true,
-                text: 'Perímetro Cefálico (cm)'
+                text: 'Perímetro Cefálico (cm)',
             },
             min: 30,
             max: 50,
             ticks: {
-                stepSize: 2
+                stepSize: 2,
             },
             grid: {
                 color: 'rgba(0, 0, 0, 0.1)',
-            }
+            },
         },
         x: {
             title: {
                 display: true,
-                text: 'Edad (meses y años completados)'
+                text: 'Edad (en meses y años)',
             },
             grid: {
                 color: 'rgba(0, 0, 0, 0.1)',
             },
             ticks: {
                 maxRotation: 45,
-            }
-        }
+            },
+        },
     },
     plugins: {
         legend: {
-            display: false,  // No mostrar leyendas ni nombres de líneas
+            display: true,  // Mostrar leyenda
+            labels: {
+                generateLabels: (chart) => {
+                    return chart.data.datasets
+                        .filter((dataset) => dataset.display !== false)  // Filtrar las que tienen display en false
+                        .map((dataset, index) => {
+                            return {
+                                text: dataset.label,
+                                fillStyle: dataset.borderColor,
+                                strokeStyle: dataset.borderColor,
+                                lineWidth: 3,
+                                index,
+                            };
+                        });
+                },
+            },
         },
         tooltip: {
             mode: 'index',

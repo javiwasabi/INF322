@@ -34,7 +34,7 @@ const data = {
     labels: labels,
     datasets: [
         {
-            label: '',
+            label: 'Aumento acelerado/deficiente',
             data: [11.3, 11.5, 12, 12.6, 13.2, 13.7, 14.2, 14.8, 15.2, 15.7, 16, 16.3, 16.5, 16.7, 16.8, 17, 17.1, 17.2, 17.3],
             borderColor: 'black',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -42,7 +42,7 @@ const data = {
             tension: 0.4,  // Curvatura suave
         },
         {
-            label: '',
+            label: 'Aumento moderado/inferior',
             data: [9.8, 10, 10.3, 10.6, 11, 11.5, 12, 12.5, 13, 13.4, 13.8, 14.2, 14.5, 14.7, 15, 15.2, 15.5, 15.7, 16],
             borderColor: 'red',
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
@@ -50,12 +50,20 @@ const data = {
             tension: 0.4,  // Curvatura suave
         },
         {
-            label: '',
+            label: 'Aumento estándar',
             data: [8.2, 8.4, 8.7, 9, 9.3, 9.7, 10, 10.3, 10.7, 11, 11.3, 11.5, 11.7, 12, 12.2, 12.5, 12.7, 12.8, 13],
             borderColor: 'green',
             backgroundColor: 'rgba(0, 255, 0, 0.1)',
             fill: false,
             tension: 0.4,  // Curvatura suave
+        },
+        {
+            label: 'Aumento de peso a través del tiempo de su hijo/a',
+            data: [8, 8.2, 8.5, 8.9, 9.3, 9.7, 10, 10.4, 10.8, 11.2, 11.5, 11.8, 12, 12.3, 12.5, 12.8, 13, 13.2, 13.4],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.1)',
+            fill: false,
+            tension: 0.4,  // Curvatura similar a la verde
         },
         {
             label: '',
@@ -64,6 +72,7 @@ const data = {
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             fill: false,
             tension: 0.4,  // Curvatura suave
+            display: false,  // Desactivado para no mostrar la leyenda
         },
         {
             label: '',
@@ -72,6 +81,7 @@ const data = {
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
             fill: false,
             tension: 0.4,  // Curvatura suave
+            display: false,  // Desactivado para no mostrar la leyenda
         },
     ],
 };
@@ -81,7 +91,7 @@ const options = {
         y: {
             title: {
                 display: true,
-                text: 'Weight (kg)'
+                text: 'Peso (kg)'
             },
             min: 5,
             max: 18,
@@ -95,7 +105,7 @@ const options = {
         x: {
             title: {
                 display: true,
-                text: 'Age (completed months and years)'
+                text: 'Edad (en meses en años)'
             },
             grid: {
                 color: 'rgba(0, 0, 0, 0.1)',
@@ -107,7 +117,22 @@ const options = {
     },
     plugins: {
         legend: {
-            display: false,  // No mostrar leyendas ni nombres de percentiles
+            display: true,  // Mostrar leyenda
+            labels: {
+                generateLabels: (chart) => {
+                    return chart.data.datasets
+                        .filter((dataset) => dataset.display !== false)  // Filtrar las que tienen display en false
+                        .map((dataset, index) => {
+                            return {
+                                text: dataset.label,
+                                fillStyle: dataset.borderColor,
+                                strokeStyle: dataset.borderColor,
+                                lineWidth: 3,
+                                index,
+                            };
+                        });
+                },
+            },
         },
         tooltip: {
             mode: 'index',

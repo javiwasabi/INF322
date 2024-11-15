@@ -22,40 +22,40 @@ ChartJS.register(
     Filler
 );
 
-// Labels del eje X (meses)
-const labels = Array.from({ length: 12 }, (_, i) => i * 2);
+// Nuevas etiquetas para el eje X (longitud en cm) con saltos de 10 cm
+const labels = [45, 55, 65, 75, 85, 95, 105];
 
 // Datos ajustados para simular una curva que sube suavemente con forma exponencial
 const data = {
     labels: labels,
     datasets: [
         {
-            label: '',
-            data: [3.4, 4.2, 5.5, 7.2, 9.1, 11.5, 14.3, 17.1, 19.2, 21.1, 22.8, 24],  // Línea negra (superior)
+            label: 'Aumento acelerado/deficiente',
+            data: [3.4, 6.2, 10.5, 13.2, 16.1, 20.5, 24],  // Línea negra (superior)
             borderColor: 'black',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
             fill: false,
             tension: 0.4,
         },
         {
-            label: '',
-            data: [3, 3.7, 4.9, 6.3, 8, 10.1, 12.4, 15.1, 17, 18.7, 20.5, 22],  // Línea roja
+            label: 'Aumento moderado/inferior',
+            data: [3.2, 4.5, 8.3, 11.2, 14.1, 18.5, 22],  // Línea roja
             borderColor: 'red',
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             fill: false,
             tension: 0.4,
         },
         {
-            label: '',
-            data: [2.7, 3.3, 4.4, 5.8, 7.4, 9.3, 11, 13, 15, 16.5, 18.2, 20],  // Línea amarilla
+            label: 'Aumento ligero/bajo',
+            data: [2.7, 4, 7.3, 10.2, 13.1, 16.5, 20],  // Línea amarilla
             borderColor: 'yellow',
             backgroundColor: 'rgba(255, 255, 0, 0.1)',
             fill: false,
             tension: 0.4,
         },
         {
-            label: '',
-            data: [2.5, 3, 4, 5.3, 6.7, 8.4, 10, 11.8, 13.5, 15, 16.7, 18.2],  // Línea verde
+            label: 'Aumento estándar',
+            data: [2.5, 3.6, 6.3, 8.2, 11.1, 14.5, 19],  // Línea verde
             borderColor: 'green',
             backgroundColor: 'rgba(0, 255, 0, 0.1)',
             fill: false,
@@ -63,25 +63,36 @@ const data = {
         },
         {
             label: '',
-            data: [2.3, 2.8, 3.7, 4.9, 6.3, 7.8, 9.3, 11, 12.6, 14, 15.2, 16.8],  // Otra línea amarilla
+            data: [2.3, 3.2, 4.5, 6.5, 8.7, 12.3, 17],  // Otra línea amarilla
             borderColor: 'yellow',
             backgroundColor: 'rgba(255, 255, 0, 0.1)',
             fill: false,
+            display: false,
             tension: 0.4,
         },
         {
             label: '',
-            data: [2.2, 2.6, 3.5, 4.7, 5.9, 7.4, 8.7, 10.2, 11.7, 13, 14.2, 15.4],  // Otra línea roja
+            data: [2.1, 3, 4.3, 6, 8, 11.8, 15],  // Otra línea roja
             borderColor: 'red',
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             fill: false,
+            display: false,
             tension: 0.4,
         },
         {
             label: '',
-            data: [1.9, 2.4, 3.3, 4.2, 5.4, 6.6, 7.8, 9.2, 10.4, 11.6, 12.9, 14.3],  // Otra línea negra (inferior)
+            data: [1.9, 2.5, 3.9, 5, 6.5, 9.5, 13],  // Otra línea negra (inferior)
             borderColor: 'black',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            fill: false,
+            display: false,
+            tension: 0.4,
+        },
+        {
+            label: 'Aumento de peso en función de la talla de su hijo/a',
+            data: [2.5, 3.4, 6, 8, 10.7, 14.3, 18.7],  // Línea azul (nueva)
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.1)',
             fill: false,
             tension: 0.4,
         },
@@ -93,33 +104,49 @@ const options = {
         y: {
             title: {
                 display: true,
-                text: 'Peso (kg)'
+                text: 'Peso (kg)',
             },
             min: 0,
             max: 24,
             ticks: {
-                stepSize: 2
+                stepSize: 2,
             },
             grid: {
                 color: 'rgba(0, 0, 0, 0.1)',
-            }
+            },
         },
         x: {
             title: {
                 display: true,
-                text: 'Edad (meses)'
+                text: 'Longitud (cm)',
             },
             grid: {
                 color: 'rgba(0, 0, 0, 0.1)',
             },
             ticks: {
                 maxRotation: 45,
-            }
-        }
+                stepSize: 10, // Cambio a 10 cm
+            },
+        },
     },
     plugins: {
         legend: {
-            display: false,  // No mostrar leyenda
+            display: true,  // Mostrar leyenda
+            labels: {
+                generateLabels: (chart) => {
+                    return chart.data.datasets
+                        .filter((dataset) => dataset.display !== false)  // Filtrar las que tienen display en false
+                        .map((dataset, index) => {
+                            return {
+                                text: dataset.label,
+                                fillStyle: dataset.borderColor,
+                                strokeStyle: dataset.borderColor,
+                                lineWidth: 3,
+                                index,
+                            };
+                        });
+                },
+            },
         },
         tooltip: {
             mode: 'index',

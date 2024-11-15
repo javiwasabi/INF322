@@ -2,7 +2,7 @@ import React from 'react';
 import BackgroundBubbles from '../Components/backgroundBubbles'; // Asegúrate de que esté en mayúscula
 import '../estilos/graphs.css'; // Asegúrate de que esta ruta sea correcta
 import { Link } from 'react-router-dom';
-
+import { PrevButton } from '../Components/buttons';
 
 function GraphsMenu() {
   return (
@@ -25,9 +25,7 @@ function GraphsMenu() {
             <Link to="/longitud" className="w-48 py-2 bg-yellow-200 rounded-lg shadow-md text-gray-700">Longitud para la edad</Link>
         </div>
           <div className="absolute bottom-4 left-4"> {/* Posicionando el botón en la esquina inferior derecha */}
-          <button className="w-48 py-2 bg-yellow-200 rounded-lg shadow-md text-gray-700">
-            <Link to="/home">Atrás</Link>
-          </button>
+          <PrevButton label="Atrás" target="/home" />
         </div>
         </div>
       </div>

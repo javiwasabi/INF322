@@ -3,6 +3,7 @@ import BackgroundBubbles from '../Components/backgroundBubbles'; // Asegúrate d
 import LinesChart from './LinesChartperimetro';
 //import '../estilos/graphs.css'; // Asegúrate de que esta ruta sea correcta
 import { Link } from 'react-router-dom';
+import { PrevButton } from '../Components/buttons';
 
 function perimetro() {
   return (
@@ -17,14 +18,14 @@ function perimetro() {
           <div className="w-full max-w-4xl"> {/* Limita el ancho del gráfico para mantenerlo centrado */}
             <LinesChart />
           </div>
-          <p className="text-base font-bold text-gray-8  00">Su hijo se encuentra en el sector: x</p>
-          <p className="text-base font-bold text-gray-8  00">Indica: normalidad/anormalidad</p>
+          <p className="text-base font-bold text-gray-800">
+            Su <span style={{ color: 'rgba(0, 0, 255)' }}>hijo</span> mantiene un perímetro cefálico similar al promedio durante el tiempo expuesto en el gráfico
+          </p>
+          {/* <p className="text-base font-bold text-gray-8  00">Indica: normalidad/anormalidad</p> */}
         </div>
-        
-        <div className="absolute bottom-4 left-4"> {/* Posicionando el botón en la esquina inferior derecha */}
-          <button className="w-48 py-2 bg-yellow-200 rounded-lg shadow-md text-gray-700">
-            <Link  ink to="/graphs">Atrás</Link>
-          </button>
+
+        <div className="absolute bottom-4 left-4"> {/* Botón en la esquina inferior derecha */}
+            <PrevButton label="Atrás" target="/graphs" />
         </div>
       </div>
     </div>
